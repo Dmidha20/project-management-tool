@@ -8,8 +8,8 @@ import navConfig from './config-navigation';
 import NavAccount from './nav-account';
 import { NAV } from '@app/configs';
 import { useResponsive } from '@app/hooks/use-responsive';
-import { Logo } from '@app/components/ui/logo';
 import { NavSectionVertical } from '@app/components/ui/nav-section';
+import pmtLogo from '@app/assets/pmt_logo1.png';
 
 interface Props {
   openNav: boolean;
@@ -58,7 +58,7 @@ export default function NavVertical({ openNav, onCloseNav, collapsed, onToggleCo
           fixed top-0 left-0 h-screen flex flex-col z-40
           ${isMobile ? 'w-64 transition-transform duration-300' : 'w-[var(--nav-width)]'}
           ${isMobile ? (openNav ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
-          bg-[var(--color-brand-50)]
+          border-r border-white/5 bg-[#080d2a] shadow-xl shadow-slate-950/20
         `}
         style={
           {
@@ -67,14 +67,22 @@ export default function NavVertical({ openNav, onCloseNav, collapsed, onToggleCo
           } as CSSVariables
         }
       >
-        <div className="relative flex items-center justify-center py-6">
-          {!collapsed && <Logo disabledLink size="xxl" variant="dark" className="w-36" />}
+        <div className="relative flex h-[92px] items-center px-5">
+          {!collapsed && (
+            <div className="-ml-5 h-[60px] w-44 overflow-hidden">
+              <img
+                src={pmtLogo}
+                alt="PMT"
+                className="-mt-[25px] w-44 max-w-none brightness-0 invert"
+              />
+            </div>
+          )}
 
           {!isMobile && (
             <button
               type="button"
               onClick={onToggleCollapse}
-              className="absolute right-6 top-2 rounded-md p-1 text-gray-500 hover:bg-gray-200 cursor-pointer"
+              className="absolute right-4 top-4 rounded-lg p-1.5 text-slate-400 hover:bg-white/10 hover:text-white cursor-pointer"
             >
               <Iconify
                 icon={collapsed ? 'mdi:chevron-right' : 'mdi:chevron-left'}
@@ -84,11 +92,11 @@ export default function NavVertical({ openNav, onCloseNav, collapsed, onToggleCo
           )}
         </div>
 
-        <div className="h-full overflow-y-auto px-4 pt-6 pb-6">
-          <NavSectionVertical  data={filteredNavConfig} mini={collapsed} />
+        <div className="h-full overflow-y-auto px-3 pb-4 pt-2 [scrollbar-width:none]">
+          <NavSectionVertical className="gap-1" data={filteredNavConfig} mini={collapsed} />
         </div>
 
-        <div className="p-4 mt-auto shrink-0">
+        <div className="mt-auto shrink-0 p-3">
           <NavAccount mini={collapsed} />
         </div>
       </aside>

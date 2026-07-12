@@ -3,67 +3,33 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { type NavItemProps } from '../types';
 
-export default function NavItem({
-  item,
-  depth,
-  open,
-  active,
-  isExternalLink,
-  mini = false,
-  ...other
-}: NavItemProps) {
+export default function NavItem({ item, depth, open, active, isExternalLink, mini = false, ...other }: NavItemProps) {
   const { title, path, icon, info, children, disabled, caption } = item;
 
   const renderContent = (
     <div
       {...other}
-      className={`
-        flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer
-        transition-colors duration-200
-        ${active ? 'bg-brand-500 text-white' : 'text-gray-700 hover:bg-gray-100'}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-        ${mini ? 'justify-center px-2' : `px-3 py-2`}
-      `}
+      className={`group flex min-h-10 items-center gap-3 rounded-lg px-3 text-sm transition-all duration-200 ${
+        active
+          ? 'bg-gradient-to-r from-violet-600 to-indigo-700 font-semibold text-white shadow-lg shadow-violet-950/25'
+          : 'text-slate-400 hover:bg-white/5 hover:text-slate-100'
+      } ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} ${mini ? 'justify-center px-2' : ''}`}
       style={{ paddingLeft: mini ? undefined : `${depth * 12}px` }}
       title={mini ? title : undefined}
     >
-      {icon && <span className="flex-shrink-0">{icon}</span>}
+      {icon && <span className={`flex shrink-0 ${active ? 'text-white' : 'text-slate-400 group-hover:text-violet-300'}`}>{icon}</span>}
       {!mini && (
-        <div className="flex-1 min-w-0">
-          <p className={`truncate text-sm ${active ? 'font-semibold' : 'font-medium'}`}>{title}</p>
-          {caption && <span className="block text-xs text-gray-500">{caption}</span>}
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[13px]">{title}</p>
+          {caption && <span className="block text-xs text-slate-500">{caption}</span>}
         </div>
       )}
-
-      {!mini && info && <span className="ml-2 text-xs text-gray-500">{info}</span>}
-
-      {!mini && !!children && (
-        <Icon
-          icon={open ? 'eva:arrow-ios-upward-fill' : 'eva:arrow-ios-downward-fill'}
-          className="ml-1 w-4 h-4 text-gray-500"
-        />
-      )}
+      {!mini && info && <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-violet-700 px-1 text-[10px] font-semibold text-violet-100">{info}</span>}
+      {!mini && !!children && <Icon icon={open ? 'eva:arrow-ios-upward-fill' : 'eva:arrow-ios-downward-fill'} className="h-4 w-4 text-slate-500" />}
     </div>
   );
 
-  if (isExternalLink) {
-    return disabled ? (
-      <div>{renderContent}</div>
-    ) : (
-      <a href={path} target="_blank" rel="noopener noreferrer" className="block no-underline">
-        {renderContent}
-      </a>
-    );
-  }
-  if (children) {
-    return renderContent;
-  }
-
-  return disabled ? (
-    <div>{renderContent}</div>
-  ) : (
-    <RouterLink to={path} className="block no-underline">
-      {renderContent}
-    </RouterLink>
-  );
+  if (isExternalLink) return disabled ? <div>{renderContent}</div> : <a href={path} target="_blank" rel="noopener noreferrer" className="block no-underline">{renderContent}</a>;
+  if (children) return renderContent;
+  return disabled ? <div>{renderContent}</div> : <RouterLink to={path} className="block no-underline">{renderContent}</RouterLink>;
 }

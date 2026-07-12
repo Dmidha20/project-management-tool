@@ -10,7 +10,7 @@ import { Iconify, Loader } from "@app/components/ui";
 interface NavItem {
   title: string;
   path: string;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   children?: NavItem[];
 }
 
@@ -77,7 +77,7 @@ export default function DashboardLayout() {
         </button>
         <h1 className="ml-4 text-xl font-semibold">{pageTitle}</h1>
       </div>
-     <div className="flex flex-row h-screen">
+      <div className="flex flex-row h-screen">
         <div className="z-[50]">{renderNavVertical}</div>
         <Main
           className="relative"

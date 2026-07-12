@@ -1,7 +1,9 @@
 import { forwardRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import pmtLogo1 from "@app/assets/pmt_logo2.png";
+import pmtLogo1 from "@app/assets/pmt_logo1.png";
+import pmtLogo2 from "@app/assets/pmt_logo2.png";
+
 
 export interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
   /** If true, disables link wrapping */
@@ -33,7 +35,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
     const logo = (
       <div ref={ref} className={`inline-flex p-3 rounded-lg ${className}`} {...other}>
         <img
-          src={pmtLogo1}
+           src={variant === 'dark' ? pmtLogo1 : pmtLogo2}
           alt={`logo-${variant}`}
           className={sizeClasses[size]}
         />

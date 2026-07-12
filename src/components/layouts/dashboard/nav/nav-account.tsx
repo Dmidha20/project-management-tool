@@ -24,7 +24,7 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
 
   // const { profile } = useProfile();
 
-  const fullName = "John";
+  const fullName = "John Doe";
 
   const updatePopoverPosition = useCallback(() => {
     if (!buttonRef.current) return;
@@ -94,7 +94,7 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
         />
         <div className="ml-3">
           <p className="text-sm font-semibold text-gray-700">{fullName}</p>
-          <p className="text-xs text-gray-500">Admin</p>
+          <p className="text-xs text-gray-500">Administrator</p>
         </div>
       </div>
       <div className="flex flex-col">
@@ -126,21 +126,23 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
         onKeyDown={(e) =>
           (e.key === "Enter" || e.key === " ") && setOpen(!open)
         }
-        className={`flex items-center rounded-lg cursor-pointer bg-[var(--color-brand-200)] ${mini ? "justify-center p-2" : "p-2 py-3"} `}
+        className={`flex items-center rounded-xl border border-white/5 bg-white/[0.04] text-white transition hover:bg-white/[0.08] cursor-pointer ${mini ? "justify-center p-2" : "p-2.5"} `}
       >
         <CustomAvatar
           name={fullName}
           color="primary"
-          className={`w-10 h-10 text-md ${mini ? "" : "ml-2"}`}
+          className={`h-9 w-9 text-sm ${mini ? "" : ""}`}
         />
 
         {!mini && (
           <div className="ml-2 min-w-0 flex-1">
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-xs font-semibold text-slate-100">
               {fullName}
             </span>
+            <p className="mt-0.5 text-[11px] text-slate-400">Administrator</p>
           </div>
         )}
+        {!mini && <Iconify icon="eva:arrow-ios-downward-fill" className="h-4 w-4 text-slate-400" />}
       </div>
       {open && createPortal(popoverContent, document.body)}
     </div>
