@@ -1,0 +1,6 @@
+export const NAV = {
+  W_DASHBOARD: 280,
+  W_DASHBOARD_MINI: 80,
+  H_DASHBOARD_ITEM: 48,
+  H_DASHBOARD_ITEM_SUB: 36,
+};
