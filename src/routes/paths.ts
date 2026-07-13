@@ -19,4 +19,5 @@ export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   app: path(ROOTS_DASHBOARD, "/app"),
   role_and_access: path(ROOTS_DASHBOARD, "/role-and-access"),
+  projects: path(ROOTS_DASHBOARD, "/projects"),
 };

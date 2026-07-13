@@ -1,11 +1,13 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { PATH_DASHBOARD } from "./paths";
 
 const LoginPage = lazy(() => import("@app/pages/login"));
 const DashboardLayout = lazy(
   () => import("@app/components/layouts/dashboard/dashboard-layout")
 );
 const DashboardPage = lazy(() => import("@app/pages/dashboard"));
+const ProjectListPage = lazy(()=> import("@app/pages/projects"))
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <DashboardPage />,
+      },
+       {
+        path:PATH_DASHBOARD.projects,
+        element: <ProjectListPage />,
       },
     ],
   },
