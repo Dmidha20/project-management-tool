@@ -1,5 +1,9 @@
-import { SummaryCard } from "@app/components/ui/cards";
 import { Icon } from "@iconify/react";
+
+import { SummaryCard } from "@app/components/ui/cards";
+
+import { ProjectProgressChart } from "./chart/project-progress-chart";
+import { TasksByStatusChart } from "./chart/tasks-by-status-chart";
 
 const Overview = () => {
   return (
@@ -39,6 +43,19 @@ const Overview = () => {
           trend="down"
           icon={<Icon icon="solar:verified-check-bold-duotone" width={28} />}
         />
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-12 items-stretch">
+        {/* Project Progress */}
+        <div className="xl:col-span-7 flex flex-col">
+          <ProjectProgressChart />
+        </div>
+
+        {/* Task Status */}
+        <div className="xl:col-span-5 flex flex-col">
+          <TasksByStatusChart />
+        </div>
       </div>
     </div>
   );

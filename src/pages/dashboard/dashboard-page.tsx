@@ -1,15 +1,13 @@
 import { useState } from "react";
 
-
-
-
 import { Button } from "@app/components/ui";
+
+import { Overview } from "./overview";
 import { Projects } from "./projects";
 import { Tasks } from "./tasks";
 import { Members } from "./members";
 import { Analytics } from "./analytics";
 import { Reports } from "./reports";
-import { Overview } from "./overview";
 
 const DashboardPage = () => {
   const tabs = [
@@ -41,18 +39,14 @@ const DashboardPage = () => {
       case "reports":
         return <Reports />;
 
-      case "overview":
       default:
         return <Overview />;
     }
   };
 
   return (
-    <div className="flex flex-col gap-6 p-6 min-h-screen bg-[var(--color-background)]">
-
-      {/* Header */}
+    <div className="flex flex-col gap-6 p-6 bg-[var(--color-background)]">
       <div className="flex items-center justify-between">
-
         <div>
           <h1 className="text-3xl font-bold text-[var(--color-text-primary)]">
             Welcome Back 👋
@@ -66,20 +60,16 @@ const DashboardPage = () => {
         <select
           value={selectedProject}
           onChange={(e) => setSelectedProject(e.target.value)}
-          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)]"
+          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 shadow-sm"
         >
           <option>All Projects</option>
           <option>Project Alpha</option>
           <option>Project Beta</option>
           <option>Project Gamma</option>
         </select>
-
       </div>
 
-      {/* Tabs */}
-
       <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-
         {tabs.map((tab) => (
           <Button
             key={tab.id}
@@ -90,15 +80,9 @@ const DashboardPage = () => {
             {tab.label}
           </Button>
         ))}
-
       </div>
 
-      {/* Content */}
-
-      <div className="flex-1">
-        {renderContent()}
-      </div>
-
+      {renderContent()}
     </div>
   );
 };
