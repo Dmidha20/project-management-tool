@@ -71,7 +71,7 @@ const DialogLayout: React.FC<DynamicPopupLayoutProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[rgba(var(--color-neutral-700-rgb),0.5)] backdrop-brightness-50"
+            className="absolute inset-0 bg-[var(--color-neutral-700)]/50 backdrop-brightness-50"
             onClick={onClose}
           />
 
@@ -80,7 +80,7 @@ const DialogLayout: React.FC<DynamicPopupLayoutProps> = ({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className={`bg-white rounded-xl ${maxWidth} ${height} w-full relative shadow-lg max-h-[90vh] flex flex-col overflow-hidden ${dialogClass}`}
+            className={`bg-[var(--color-surface)] rounded-xl ${maxWidth} ${height} w-full relative shadow-lg max-h-[90vh] flex flex-col overflow-hidden ${dialogClass}`}
           >
             {title && (
               <div
@@ -90,14 +90,14 @@ const DialogLayout: React.FC<DynamicPopupLayoutProps> = ({
               >
                 <div className="flex flex-col">
                   <h2 className="text-lg font-semibold">{title}</h2>
-                  {description && <p className="text-sm text-gray-500 mb-4 ">{description}</p>}
+                  {description && <p className="text-sm text-[var(--color-text-secondary)] mb-4 ">{description}</p>}
                 </div>
                 <Button
                   variant="clear"
                   onClick={onClose}
-                  className="!p-1 bg-transparent hover:bg-gray-100 rounded-full"
+                  className="!p-1 bg-transparent hover:bg-[var(--color-surface-hover)] rounded-full"
                 >
-                  <Iconify icon="ic:outline-close" className="w-6 h-6 text-gray-500" />
+                  <Iconify icon="ic:outline-close" className="w-6 h-6 text-[var(--color-icon-primary)]" />
                 </Button>
               </div>
             )}

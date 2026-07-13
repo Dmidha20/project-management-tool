@@ -14,7 +14,7 @@ const Loader: React.FC<LoaderProps> = ({ size = 60, loading, children }) => {
   return (
     <div className="flex justify-center items-center h-full w-full mt-auto mb-auto">
       <div
-        className="border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+        className="border-4 border-[var(--color-neutral-300)] border-t-[var(--color-info-500)] rounded-full animate-spin"
         style={{ width: size, height: size }}
       ></div>
     </div>

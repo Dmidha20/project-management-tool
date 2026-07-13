@@ -47,7 +47,7 @@ export default function NavVertical({ openNav, onCloseNav, collapsed, onToggleCo
             type="button"
             aria-label="Close navigation"
             onClick={onCloseNav}
-            className="fixed top-2 right-6 z-50 flex justify-end p-2 rounded-md text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="fixed top-2 right-6 z-50 flex justify-end p-2 rounded-md text-[var(--color-text-disabled)] hover:text-[var(--color-icon-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)]"
           >
             <Iconify icon="fluent-emoji-high-contrast:cross-mark" className="w-6 h-6" />
           </button>
@@ -58,7 +58,7 @@ export default function NavVertical({ openNav, onCloseNav, collapsed, onToggleCo
           fixed top-0 left-0 h-screen flex flex-col z-40
           ${isMobile ? 'w-64 transition-transform duration-300' : 'w-[var(--nav-width)]'}
           ${isMobile ? (openNav ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
-          border-r border-white/5 bg-[#080d2a] shadow-xl shadow-slate-950/20
+          border-r border-[var(--color-text-white)]/5 bg-[var(--color-sidebar)] shadow-xl shadow-[var(--color-neutral-900)]/20
         `}
         style={
           {
@@ -82,7 +82,7 @@ export default function NavVertical({ openNav, onCloseNav, collapsed, onToggleCo
             <button
               type="button"
               onClick={onToggleCollapse}
-              className="absolute right-4 top-4 rounded-lg p-1.5 text-slate-400 hover:bg-white/10 hover:text-white cursor-pointer"
+              className="absolute right-4 top-4 rounded-lg p-1.5 text-[var(--color-text-disabled)] hover:bg-[var(--color-text-white)]/10 hover:text-[var(--color-text-white)] cursor-pointer"
             >
               <Iconify
                 icon={collapsed ? 'mdi:chevron-right' : 'mdi:chevron-left'}

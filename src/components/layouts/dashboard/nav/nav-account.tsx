@@ -80,36 +80,36 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
   const popoverContent = (
     <div
       ref={popoverRef}
-      className="fixed w-56 bg-white shadow-xl rounded-lg border border-gray-200 z-[9999] animate-in fade-in-0 zoom-in-95"
+      className="fixed w-56 bg-[var(--color-surface)] shadow-xl rounded-lg border border-[var(--color-border)] z-[9999] animate-in fade-in-0 zoom-in-95"
       style={{
         top: `${popoverPosition.top}px`,
         left: `${popoverPosition.left}px`,
       }}
     >
-      <div className="flex items-center p-4 border-b border-gray-300">
+      <div className="flex items-center p-4 border-b border-[var(--color-neutral-300)]">
         <CustomAvatar
           name={fullName}
           color="primary"
           className="w-12 h-12 text-lg"
         />
         <div className="ml-3">
-          <p className="text-sm font-semibold text-gray-700">{fullName}</p>
-          <p className="text-xs text-gray-500">Administrator</p>
+          <p className="text-sm font-semibold text-[var(--color-text-primary)]">{fullName}</p>
+          <p className="text-xs text-[var(--color-text-secondary)]">Administrator</p>
         </div>
       </div>
       <div className="flex flex-col">
         <button
           onClick={handleMyProfileClick}
-          className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 text-gray-700 text-sm"
+          className="flex items-center gap-2 px-4 py-3 hover:bg-[var(--color-surface-hover)] text-[var(--color-text-primary)] text-sm"
         >
-          <Iconify icon="material-symbols:person" className="text-gray-500" />
+          <Iconify icon="material-symbols:person" className="text-[var(--color-icon-primary)]" />
           {"Profile"}
         </button>
         <button
           // onClick={handleLogoutClick}
-          className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 text-gray-700 text-sm"
+          className="flex items-center gap-2 px-4 py-3 hover:bg-[var(--color-surface-hover)] text-[var(--color-text-primary)] text-sm"
         >
-          <Iconify icon="material-symbols:logout" className="text-gray-500" />
+          <Iconify icon="material-symbols:logout" className="text-[var(--color-icon-primary)]" />
           {"LogOut"}
         </button>
       </div>
@@ -126,7 +126,7 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
         onKeyDown={(e) =>
           (e.key === "Enter" || e.key === " ") && setOpen(!open)
         }
-        className={`flex items-center rounded-xl border border-white/5 bg-white/[0.04] text-white transition hover:bg-white/[0.08] cursor-pointer ${mini ? "justify-center p-2" : "p-2.5"} `}
+        className={`flex items-center rounded-xl border border-[var(--color-text-white)]/5 bg-[var(--color-text-white)]/[0.04] text-[var(--color-text-white)] transition hover:bg-[var(--color-text-white)]/[0.08] cursor-pointer ${mini ? "justify-center p-2" : "p-2.5"} `}
       >
         <CustomAvatar
           name={fullName}
@@ -136,13 +136,13 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
 
         {!mini && (
           <div className="ml-2 min-w-0 flex-1">
-            <span className="text-xs font-semibold text-slate-100">
+            <span className="text-xs font-semibold text-[var(--color-neutral-100)]">
               {fullName}
             </span>
-            <p className="mt-0.5 text-[11px] text-slate-400">Administrator</p>
+            <p className="mt-0.5 text-[11px] text-[var(--color-text-disabled)]">Administrator</p>
           </div>
         )}
-        {!mini && <Iconify icon="eva:arrow-ios-downward-fill" className="h-4 w-4 text-slate-400" />}
+        {!mini && <Iconify icon="eva:arrow-ios-downward-fill" className="h-4 w-4 text-[var(--color-text-disabled)]" />}
       </div>
       {open && createPortal(popoverContent, document.body)}
     </div>
