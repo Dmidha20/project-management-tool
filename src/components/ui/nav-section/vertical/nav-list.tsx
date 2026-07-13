@@ -32,7 +32,7 @@ export default function NavList({ data, depth, hasChild, mini = false }: NavList
   const handleClose = () => setOpen(false);
 
   if (data.divider) {
-    return <hr className="my-3 border-t border-white/10" />;
+    return <hr className="my-3 border-t border-[var(--color-text-white)]/10" />;
   }
 
   return (

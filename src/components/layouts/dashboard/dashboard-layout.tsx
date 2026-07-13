@@ -68,10 +68,10 @@ export default function DashboardLayout() {
 
   return (
     <div className="flex flex-col h-screen">
-      <div className="sticky top-0 z-50 flex items-center p-2 border-b border-gray-200 bg-white sm:hidden">
+      <div className="sticky top-0 z-50 flex items-center p-2 border-b border-[var(--color-border)] bg-[var(--color-surface)] sm:hidden">
         <button
           onClick={toggleDrawer}
-          className="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="p-2 rounded-md hover:bg-[var(--color-surface-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)]"
         >
           <Iconify icon="oi:menu" className="w-6 h-6" />
         </button>
@@ -87,7 +87,7 @@ export default function DashboardLayout() {
           }}
         >
           {isRouteLoading && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70">
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[var(--color-surface)]/70">
               <PageLoader />
             </div>
           )}

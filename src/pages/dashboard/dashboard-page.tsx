@@ -48,17 +48,17 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 p-6 min-h-screen bg-slate-50">
+    <div className="flex flex-col gap-6 p-6 min-h-screen bg-[var(--color-background)]">
 
       {/* Header */}
       <div className="flex items-center justify-between">
 
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-3xl font-bold text-[var(--color-text-primary)]">
             Welcome Back 👋
           </h1>
 
-          <p className="mt-1 text-slate-500">
+          <p className="mt-1 text-[var(--color-text-secondary)]">
             Monitor your projects, tasks and team performance.
           </p>
         </div>
@@ -66,7 +66,7 @@ const DashboardPage = () => {
         <select
           value={selectedProject}
           onChange={(e) => setSelectedProject(e.target.value)}
-          className="rounded-xl border border-slate-300 bg-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)]"
         >
           <option>All Projects</option>
           <option>Project Alpha</option>

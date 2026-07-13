@@ -13,11 +13,11 @@ const getCharAtName = (name: string) => {
 const getColorClassByName = (name: string) => {
   const char = getCharAtName(name);
   if (['A', 'N', 'H', 'L', 'Q'].includes(char))
-    return 'bg-[var(--color-brand-500)] text-[var(--color-on-brand)]';
-  if (['F', 'G', 'T', 'I', 'J'].includes(char)) return 'bg-[var(--color-accent-teal)] text-white';
-  if (['K', 'D', 'Y', 'B', 'O'].includes(char)) return 'bg-[var(--color-success)] text-white';
-  if (['P', 'E', 'R', 'S', 'U'].includes(char)) return 'bg-[var(--color-accent-yellow)] text-black';
-  if (['V', 'W', 'X', 'M', 'Z'].includes(char)) return 'bg-[var(--color-error)] text-white';
+    return 'bg-[var(--color-primary-500)] text-[var(--color-on-primary)]';
+  if (['F', 'G', 'T', 'I', 'J'].includes(char)) return 'bg-[var(--color-info-500)] text-[var(--color-on-primary)]';
+  if (['K', 'D', 'Y', 'B', 'O'].includes(char)) return 'bg-[var(--color-success-500)] text-[var(--color-on-primary)]';
+  if (['P', 'E', 'R', 'S', 'U'].includes(char)) return 'bg-[var(--color-warning-400)] text-[var(--color-text-primary)]';
+  if (['V', 'W', 'X', 'M', 'Z'].includes(char)) return 'bg-[var(--color-error-500)] text-[var(--color-on-primary)]';
 
   return 'bg-[var(--color-neutral-300)] text-[var(--color-neutral-800)]';
 };
@@ -48,18 +48,18 @@ const CustomAvatar = forwardRef<HTMLDivElement, CustomAvatarWithSrcProps>(
     const colorClass = (() => {
       switch (color) {
         case 'primary':
-          return 'bg-[var(--color-brand-500)] text-[var(--color-on-brand)]';
+          return 'bg-[var(--color-primary-500)] text-[var(--color-on-primary)]';
         case 'brand-light':
-          return 'bg-[var(--color-brand-100)] text-[var(--color-on-brand)]';
+          return 'bg-[var(--color-primary-100)] text-[var(--color-primary-700)]';
         case 'secondary':
         case 'info':
-          return 'bg-[var(--color-accent-teal)] text-white';
+          return 'bg-[var(--color-info-500)] text-[var(--color-on-primary)]';
         case 'success':
-          return 'bg-[var(--color-success)] text-white';
+          return 'bg-[var(--color-success-500)] text-[var(--color-on-primary)]';
         case 'warning':
-          return 'bg-[var(--color-accent-yellow)] text-black';
+          return 'bg-[var(--color-warning-400)] text-[var(--color-text-primary)]';
         case 'error':
-          return 'bg-[var(--color-error)] text-white';
+          return 'bg-[var(--color-error-500)] text-[var(--color-on-primary)]';
         case 'default':
         default:
           return getColorClassByName(name);
@@ -84,8 +84,8 @@ const CustomAvatar = forwardRef<HTMLDivElement, CustomAvatarWithSrcProps>(
 
         {BadgeProps && (
           <span
-            className={`absolute bottom-0 right-0 block w-2 h-2 rounded-full border-2 border-white ${
-              BadgeProps.color || 'bg-[var(--color-success)]'
+            className={`absolute bottom-0 right-0 block w-2 h-2 rounded-full border-2 border-[var(--color-surface)] ${
+              BadgeProps.color || 'bg-[var(--color-success-500)]'
             }`}
           />
         )}

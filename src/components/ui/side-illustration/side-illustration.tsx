@@ -27,7 +27,7 @@ const SideIllustration = () => {
         </div>
 
         <section className="mt-2 max-w-[300px] xl:mt-3">
-          <h2 className="text-4xl font-bold leading-[1.14] tracking-tight xl:text-[46px]">
+          <h2 className="text-4xl font-bold leading-[1.14] tracking-tight !text-white xl:text-[46px]">
             Plan.<br />
             Track.<br />
             <span className="text-violet-400">Deliver.</span>
@@ -43,7 +43,7 @@ const SideIllustration = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500/90 shadow-lg shadow-indigo-950/30">
                 <Icon icon={icon} width={19} />
               </div>
-              <h4 className="mt-2.5 text-sm font-semibold">{title}</h4>
+              <h4 className="mt-2.5 text-sm font-semibold !text-white">{title}</h4>
               <p className="mt-1 text-xs leading-5 text-indigo-100/75">{description}</p>
             </div>
           ))}
