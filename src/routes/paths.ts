@@ -19,6 +19,7 @@ export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   overview: path(ROOTS_DASHBOARD, "/overview"),
   projects: path(ROOTS_DASHBOARD, "/projects"),
+  sections: path(ROOTS_DASHBOARD, "/sections"),
   board: path(ROOTS_DASHBOARD, "/board"),
   members: path(ROOTS_DASHBOARD, "/members"),
   analytics: path(ROOTS_DASHBOARD, "/analytics"),

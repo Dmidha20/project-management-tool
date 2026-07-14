@@ -45,6 +45,7 @@ const Projects = () => {
               members={members}
               onOpen={() => navigate(`/dashboard/board?project=${project.id}`)}
               onManageMembers={() => setManaging(project)}
+              onViewSections={() => navigate(`/dashboard/sections?project=${project.id}`)}
             />
           ))}
         </div>

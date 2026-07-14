@@ -8,6 +8,7 @@ const DashboardLayout = lazy(
 
 const Overview = lazy(() => import("@app/pages/dashboard/overview"));
 const Projects = lazy(() => import("@app/pages/dashboard/projects"));
+const Sections = lazy(() => import("@app/pages/dashboard/sections"));
 const Board = lazy(() => import("@app/pages/dashboard/tasks"));
 const Members = lazy(() => import("@app/pages/dashboard/members"));
 const Analytics = lazy(() => import("@app/pages/dashboard/analytics"));
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="overview" replace /> },
       { path: "overview", element: <Overview /> },
       { path: "projects", element: <Projects /> },
+      { path: "sections", element: <Sections /> },
       { path: "board", element: <Board /> },
       { path: "members", element: <Members /> },
       { path: "analytics", element: <Analytics /> },

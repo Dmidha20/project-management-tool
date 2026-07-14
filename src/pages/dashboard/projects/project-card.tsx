@@ -12,6 +12,7 @@ interface ProjectCardProps {
   members: Member[];
   onOpen: () => void;
   onManageMembers: () => void;
+  onViewSections: () => void;
 }
 
 const Stat = ({ icon, label, value }: { icon: string; label: string; value: number }) => (
@@ -28,6 +29,7 @@ export const ProjectCard = ({
   members,
   onOpen,
   onManageMembers,
+  onViewSections,
 }: ProjectCardProps) => {
   const projectTasks = tasks.filter((task) => task.projectId === project.id);
   const progress = progressOf(projectTasks);
@@ -59,14 +61,24 @@ export const ProjectCard = ({
             </div>
           </button>
 
-          <button
-            type="button"
-            onClick={onManageMembers}
-            title="Assign members"
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--color-text-secondary)] transition hover:bg-[var(--color-neutral-150)] hover:text-[var(--color-text-primary)]"
-          >
-            <Icon icon="solar:users-group-rounded-linear" width={18} />
-          </button>
+          <div className="flex shrink-0 items-center gap-1">
+            <button
+              type="button"
+              onClick={onViewSections}
+              title="View sections"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--color-text-secondary)] transition hover:bg-[var(--color-neutral-150)] hover:text-[var(--color-text-primary)]"
+            >
+              <Icon icon="solar:layers-minimalistic-linear" width={18} />
+            </button>
+            <button
+              type="button"
+              onClick={onManageMembers}
+              title="Assign members"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--color-text-secondary)] transition hover:bg-[var(--color-neutral-150)] hover:text-[var(--color-text-primary)]"
+            >
+              <Icon icon="solar:users-group-rounded-linear" width={18} />
+            </button>
+          </div>
         </div>
 
         <p className="mt-3 line-clamp-2 text-sm text-[var(--color-text-secondary)]">

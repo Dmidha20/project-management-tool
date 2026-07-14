@@ -21,6 +21,11 @@ const navConfig: NavListProps[] = [
     icon: icon("solar:folder-linear"),
   },
   {
+    title: "Sections",
+    path: PATH_DASHBOARD.sections,
+    icon: icon("solar:layers-minimalistic-linear"),
+  },
+  {
     title: "Members",
     path: PATH_DASHBOARD.members,
     icon: icon("solar:users-group-rounded-linear"),

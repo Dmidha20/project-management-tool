@@ -31,6 +31,25 @@ const projectsSlice = createSlice({
       const project = state.find((item) => item.id === action.payload.projectId);
       if (project) project.sections.push(action.payload.section);
     },
+    renameSection: (
+      state,
+      action: PayloadAction<{ projectId: string; sectionId: string; name: string }>,
+    ) => {
+      const project = state.find((item) => item.id === action.payload.projectId);
+      const section = project?.sections.find((item) => item.id === action.payload.sectionId);
+      if (section) section.name = action.payload.name;
+    },
+    removeSection: (
+      state,
+      action: PayloadAction<{ projectId: string; sectionId: string }>,
+    ) => {
+      const project = state.find((item) => item.id === action.payload.projectId);
+      if (project) {
+        project.sections = project.sections.filter(
+          (item) => item.id !== action.payload.sectionId,
+        );
+      }
+    },
   },
 });
 
@@ -40,5 +59,7 @@ export const {
   removeProject,
   setProjectMembers,
   addSection,
+  renameSection,
+  removeSection,
 } = projectsSlice.actions;
 export default projectsSlice.reducer;

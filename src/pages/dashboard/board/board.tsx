@@ -25,6 +25,7 @@ export const Board = () => {
   const projects = useAppSelector((state) => state.projects);
 
   const [projectId, setProjectId] = useState(searchParams.get("project") ?? "all");
+  const [sectionId, setSectionId] = useState(searchParams.get("section") ?? "all");
   const [assigneeId, setAssigneeId] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [criticalOnly, setCriticalOnly] = useState(false);
@@ -36,17 +37,19 @@ export const Board = () => {
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState<DragOver | null>(null);
 
-  // Deep links: ?project=<id>, ?assignee=<id>, ?task=<id>, ?critical=1
+  // Deep links: ?project=<id>, ?section=<id>, ?assignee=<id>, ?task=<id>, ?critical=1
   useEffect(() => {
     const project = searchParams.get("project");
+    const section = searchParams.get("section");
     const assignee = searchParams.get("assignee");
     const task = searchParams.get("task");
     const critical = searchParams.get("critical");
     if (project) setProjectId(project);
+    if (section) setSectionId(section);
     if (assignee) setAssigneeId(assignee);
     if (task) setOpenTaskId(task);
     if (critical) setCriticalOnly(true);
-    if (project || assignee || task || critical) {
+    if (project || section || assignee || task || critical) {
       setSearchParams({}, { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,6 +69,7 @@ export const Board = () => {
     return tasks.filter(
       (task) =>
         (projectId === "all" || task.projectId === projectId) &&
+        (sectionId === "all" || task.sectionId === sectionId) &&
         (assigneeId === "all" || task.assigneeId === assigneeId) &&
         (typeFilter === "all" || task.type === typeFilter) &&
         (!criticalOnly || task.critical) &&
@@ -73,7 +77,7 @@ export const Board = () => {
           task.title.toLowerCase().includes(query) ||
           task.code.toLowerCase().includes(query)),
     );
-  }, [tasks, projectId, assigneeId, typeFilter, criticalOnly, search]);
+  }, [tasks, projectId, sectionId, assigneeId, typeFilter, criticalOnly, search]);
 
   const columns = useMemo(
     () =>
@@ -138,12 +142,31 @@ export const Board = () => {
           size="sm"
           className="w-44"
           value={projectId}
-          onChange={setProjectId}
+          onChange={(value) => {
+            setProjectId(value);
+            setSectionId("all");
+          }}
           options={[
             { value: "all", label: "All Projects" },
             ...projects.map((project) => ({ value: project.id, label: project.name })),
           ]}
         />
+
+        {activeProject && (
+          <Select
+            size="sm"
+            className="w-40"
+            value={sectionId}
+            onChange={setSectionId}
+            options={[
+              { value: "all", label: "All Sections" },
+              ...activeProject.sections.map((section) => ({
+                value: section.id,
+                label: section.name,
+              })),
+            ]}
+          />
+        )}
 
         <Select
           size="sm"
