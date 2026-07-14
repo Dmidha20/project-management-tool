@@ -8,9 +8,8 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
-    "baseUrl": ".",
     "paths": {
-      "@app/*": ["src/*"]
+      "@app/*": ["./src/*"]
     },
 
     "moduleResolution": "bundler",
@@ -25,5 +24,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/core", "src/pages/login/validators.ts"]
 }

@@ -24,7 +24,7 @@ export default function NavAccount({ mini = false }: NavAccountProps) {
 
   // const { profile } = useProfile();
 
-  const fullName = "John Doe";
+  const fullName = "Alice Johnson";
 
   const updatePopoverPosition = useCallback(() => {
     if (!buttonRef.current) return;

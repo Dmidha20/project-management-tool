@@ -24,8 +24,6 @@ const DialogLayout: React.FC<DynamicPopupLayoutProps> = ({
   title,
   children,
   footer,
-  maxWidth = "max-w-2xl",
-  height = "",
   borderHidden = false,
   dialogClass = "",
   contentClass = "",

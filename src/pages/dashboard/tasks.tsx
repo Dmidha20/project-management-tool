@@ -1,5 +1,6 @@
-const Tasks = () => {
-  return <div>Tasks Page</div>;
-};
+import { Board } from "./board/board";
+
+const Tasks = () => <Board />;
 
 export { Tasks };
+export default Tasks;

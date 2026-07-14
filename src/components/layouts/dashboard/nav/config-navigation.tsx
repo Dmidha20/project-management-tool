@@ -6,9 +6,14 @@ const icon = (name: string) => <Icon icon={name} width={20} />;
 
 const navConfig: NavListProps[] = [
   {
-    title: "Dashboard",
-    path: PATH_DASHBOARD.app,
+    title: "Overview",
+    path: PATH_DASHBOARD.overview,
     icon: icon("solar:home-2-linear"),
+  },
+  {
+    title: "Task Board",
+    path: PATH_DASHBOARD.board,
+    icon: icon("solar:widget-5-linear"),
   },
   {
     title: "Projects",
@@ -16,46 +21,20 @@ const navConfig: NavListProps[] = [
     icon: icon("solar:folder-linear"),
   },
   {
-    title: "Sections",
-    path: "/dashboard/sections",
-    icon: icon("solar:layers-linear"),
-  },
-  {
-    title: "Tasks",
-    path: "/dashboard/tasks",
-    icon: icon("solar:check-square-linear"),
-  },
-  {
-    title: "My Tasks",
-    path: "/dashboard/my-tasks",
-    icon: icon("solar:user-check-linear"),
-  },
-  {
     title: "Members",
-    path: "/dashboard/members",
+    path: PATH_DASHBOARD.members,
     icon: icon("solar:users-group-rounded-linear"),
-  },
-  {
-    title: "Chat",
-    path: "/dashboard/chat",
-    icon: icon("solar:chat-round-dots-linear"),
   },
   { title: "divider", path: "#", divider: true },
   {
-    title: "Role & Access",
-    path: PATH_DASHBOARD.role_and_access,
-    icon: icon("solar:shield-keyhole-linear"),
+    title: "Analytics",
+    path: PATH_DASHBOARD.analytics,
+    icon: icon("solar:chart-2-linear"),
   },
   {
-    title: "Notifications",
-    path: "/dashboard/notifications",
-    icon: icon("solar:bell-linear"),
-    info: "3",
-  },
-  {
-    title: "Settings",
-    path: "/dashboard/settings",
-    icon: icon("solar:settings-linear"),
+    title: "Reports",
+    path: PATH_DASHBOARD.reports,
+    icon: icon("solar:document-text-linear"),
   },
 ];
 
